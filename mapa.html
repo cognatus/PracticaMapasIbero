@@ -7,24 +7,63 @@
 
 	<div id="map" style="height: 500px; width: 500px;"></div>
 
+	<br>
+	<ul id="lista">
+		
+	</ul>
+
 	<script>
 		function initMap() {
-			var coor = {lat: -25.363, lng: 131.044};
+
+			var coor = {lat: 19.432778, lng: -99.133333};
 
 			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 4,
+				zoom: 12,
 				center: coor
 			});
-			
+
 			var marker = new google.maps.Marker({
 				position: coor,
-				map: map
+				draggable: true,
+				map: map,
+				animation: google.maps.Animation.DROP
 			});
+
+			var accionEvento = (event) => {
+
+				document.getElementById('lista').innerHTML = "";
+
+				var valoresGeo = new google.maps.Geocoder;
+
+				var latLng = {lat: event.latLng.lat(), lng: event.latLng.lng()};
+
+				valoresGeo.geocode({'location': latLng}, function (results, status) {
+
+					if (status === 'OK') {
+
+						for(indice in results){
+							var address = results[indice].formatted_address;
+							var nodo = document.createElement('LI');
+							var textoNodo = document.createTextNode(address);
+							nodo.appendChild(textoNodo);
+							document.getElementById('lista').appendChild(nodo);
+						}
+
+					}else{
+						alert('Estas entrando a un universo paralelo')
+					}
+					
+				})
+				
+			}
+
+			marker.addListener('dragend', accionEvento);
+
 		}
 	</script>
 
 	<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyOjncg7kyGq_BHj9UGlO2V2IVP3W3NAI&callback=initMap">
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdIs7gLEcdpd4n_h2W7RPHzC-ahP2Da6o&callback=initMap">
 	</script>
 </body>
 </html>
