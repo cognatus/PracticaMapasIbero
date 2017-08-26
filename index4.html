@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript4</title>
+</head>
+<body>
+
+	<form action="otro.html" onsubmit="return valida()">
+		<!-- <input type="text" onkeypress="return valida2(event)" name="nombre" id="nombre"> -->
+		<input type="text" name="nombre" id="nombre">
+		<br>
+		<br>
+		<button type="submit">Boton</button>
+	</form>
+
+	<script type="text/javascript">
+	
+	var abecedario = 'qwertyuioplkjhgfdsazxcvbnm ';
+		
+	function valida() {
+		
+		var dato = document.getElementById('nombre').value;
+
+		for (indice in dato) {
+			if (abecedario.indexOf(dato[indice]) == -1) {
+				alert('Es invalido');
+				return false;
+			}
+		}
+
+	}
+
+	function valida2(e) {
+		if (abecedario.indexOf(e.key) == -1) {
+			return false;
+		}
+	}
+
+	</script>
+
+</body>
+</html>

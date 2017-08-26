@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript</title>
+	<style type="text/css">
+		
+		.colorTexto{
+			color: blue;
+		}
+
+		.colorFondo{
+			background-color: yellow;
+		}
+
+	</style>
+</head>
+<body>
+	<h1 class="colorTexto" >Esto es para javascript</h1>
+	<br>
+		<p class="colorTexto colorFondo">Esto es el numero uno</p>
+		<input placeholder="Numero 1" type="text" name="numero1" id="numero1" maxlength="6">
+		<br>
+		<br>
+		<input placeholder="Numero 2" type="text" name="numero2" id="numero2" maxlength="6">
+		<br>
+		<br>
+		<select id="operacion">
+			<option value="suma" >suma</option>
+			<option value="resta" >resta</option>
+			<option value="multiplicacion" >multiplicacion</option>
+			<option value="division" >division</option>
+		</select>
+		<br>
+		<br>
+		<button onclick="validar()" >Esto es un boton</button>
+		<br>
+		<br>
+		<input type="text" id="resultText">
+	<script type="text/javascript">
+
+		function validar() {
+			var numero = document.getElementById('numero1').value;
+			var numero2 = document.getElementById('numero2').value;
+
+			if (isNaN(numero) || isNaN(numero2)) {
+				alert('Por favor pon solo numeros en los input');
+			}else{
+				calculadora(numero, numero2);
+			}
+		}
+		
+		function calculadora(x, y) {
+
+			var numero = parseInt(x);
+			var numero2 = parseInt(y);
+
+			var operacion = document.getElementById('operacion').value;
+
+			var resultado = 0;
+
+			if ( operacion == 'multiplicacion' ) {
+				resultado = numero*numero2;
+			}else if( operacion == 'division' ){
+				resultado = numero/numero2;
+			}else if( operacion == 'suma' ){
+				resultado = numero+numero2;
+			}else if( operacion == 'resta' ){
+				resultado = numero-numero2;
+			}
+
+			console.log('Es es el resultado de la '+operacion+': '+resultado);
+			document.getElementById('resultText').value = 'Es es el resultado de la '+operacion+': '+resultado;
+
+		}
+			
+
+	</script>
+</body>
+</html>

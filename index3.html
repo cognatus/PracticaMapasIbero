@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript3</title>
+</head>
+<body>
+	<input placeholder="nombre" type="text" name="nombre" id="nombre">
+	<br>
+	<input placeholder="edad" type="number" name="edad" id="edad">
+	<br>
+	<input placeholder="nacionalidad" type="text" name="nacionalidad" id="nacionalidad">
+	<br>
+	<br>
+	<button onclick="aniade()">Funciona!</button>
+
+	<script type="text/javascript">
+		
+		var obj = [
+					{
+						nombre: 'Diego',
+						edad: 20,
+						nacionalidad: 'MX',
+						arreglo: [0,9,'2']
+					},
+					{
+						nombre: 'Fulano',
+						edad: 18,
+						nacionalidad: 'US',
+						arreglo: [true,9,'2']
+					},
+					{
+						nombre: 'Mengano',
+						edad: 22,
+						nacionalidad: 'MX/US',
+						arreglo: [0,8,'hola']
+					}
+				  ];
+
+		function aniade() {
+
+			var objAux = {
+
+				nombre: document.getElementById('nombre').value,
+				edad: document.getElementById('edad').value,
+				nacionalidad: document.getElementById('nacionalidad').value
+
+			}
+
+			obj.push(objAux);
+
+			despliega();
+
+		}
+
+		function despliega() {
+
+			for (var i = 0; i < obj.length; i++) {
+			
+				console.log(obj[i].nombre);
+				console.log(obj[i].edad);
+				console.log(obj[i].nacionalidad);
+
+			}
+
+		}
+
+	</script>
+
+</body>
+</html>

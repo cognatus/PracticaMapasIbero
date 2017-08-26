@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javscript5</title>
+</head>
+<body>
+
+	<input type="text" onkeyup="busca()" name="busqueda" id="busqueda">
+	<br>
+	<br>
+	<ul id="lista">
+	</ul>
+
+	<script type="text/javascript">
+		
+	var informacion = [
+
+		'Hola',
+		'Lo que sea',
+		'Esto',
+		'Ibero',
+		'IPN',
+		'Microsoft',
+		'Ubuntu',
+		'javascript',
+		'Java',
+		'Xubuntu',
+		'NaSa',
+		'ESte',
+		'otro'
+	];
+
+	carga();
+
+	function carga() {
+		for(indice in informacion){
+			var nombre = informacion[indice];
+			var nodo = document.createElement('LI');
+			/*nodo == <li></li>*/
+			var textoNodo = document.createTextNode(nombre);
+			nodo.appendChild(textoNodo);
+			/*nodo == <li>Este</li>*/
+			document.getElementById('lista').appendChild(nodo);
+		}
+	}	
+
+	function busca() {
+
+		document.getElementById('lista').innerHTML = "";
+
+		var palabra = document.getElementById('busqueda').value;
+		console.log(palabra)
+		var tam = palabra.length;
+
+		console.log(tam)
+
+		if (tam == 0) {
+			carga();
+		}
+
+		for(indice in informacion){
+			var nombre = informacion[indice];
+			var string = nombre.substring(0, tam);
+
+			if (tam <= nombre.length && tam != 0 && nombre.length != 0) {
+				if (palabra.toLowerCase() == string.toLowerCase()) {
+
+					var nodo = document.createElement('LI');
+					var textoNodo = document.createTextNode(nombre);
+					nodo.appendChild(textoNodo);
+					document.getElementById('lista').appendChild(nodo);
+
+				}
+			}
+		}
+	}
+
+
+	</script>
+
+</body>
+</html>
